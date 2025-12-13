@@ -45,7 +45,7 @@ Mathematical foundations: Linear algebra, statistics, optimization theory
 
 Production mindset: Clean code, documentation, reproducibility
 
-Tech Stack
+# Tech Stack
 
 Python 3.x
 NumPy / Pandas
