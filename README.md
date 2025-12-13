@@ -1,9 +1,9 @@
 # ai-security-lab
-AI Security Lab
+# AI Security Lab
 
 Hands-on implementations of AI/ML security systems, built from first principles.
 
-About This Project
+# About This Project
 
 This repository documents my journey from cybersecurity professional to AI security engineer. Every algorithm is implemented from scratch to build deep understanding—not just library calls.
 
@@ -11,7 +11,7 @@ Background: Master's in Cybersecurity | Security Architecture | Threat Modeling
 
 Goal: Bridge the gap between AI/ML and cybersecurity—building systems that can detect, defend, and assess AI-powered threats.
 
-Repository Structure
+# Repository Structure
 
 week-01-python-foundations/
 
@@ -37,7 +37,7 @@ week-11-portfolio/
 
 week-12-integration/
 
-From-scratch implementations: Not just sklearn.fit()—actual algorithm internals
+# From-scratch implementations: Not just sklearn.fit()—actual algorithm internals
 
 Security-first thinking: Every project framed around threat detection and defense
 
