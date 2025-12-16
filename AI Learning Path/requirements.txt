@@ -1,0 +1,92 @@
+# AI/ML Security Mastery - Requirements File
+# Last Updated: December 2025
+# Python Version: 3.10+ required (3.11 or 3.12 recommended)
+
+# ============================================
+# CORE DATA SCIENCE STACK
+# ============================================
+numpy>=2.3.0                    # Numerical computing foundation
+pandas>=2.3.0                   # Data manipulation and analysis
+scipy>=1.16.0                   # Scientific computing
+
+# ============================================
+# VISUALIZATION
+# ============================================
+matplotlib>=3.10.0              # Core plotting library
+seaborn>=0.13.2                 # Statistical visualization
+
+# ============================================
+# MACHINE LEARNING - Classical
+# ============================================
+scikit-learn>=1.7.0             # Classical ML algorithms
+xgboost>=2.1.0                  # Gradient boosting
+
+# ============================================
+# DEEP LEARNING
+# ============================================
+torch>=2.9.0                    # PyTorch - primary DL framework
+torchvision>=0.24.0             # Computer vision utilities
+torchaudio>=2.9.0               # Audio processing (optional)
+
+# ============================================
+# NATURAL LANGUAGE / LLM TOOLS
+# ============================================
+transformers>=4.45.0            # Hugging Face transformers
+tokenizers>=0.20.0              # Fast tokenization
+datasets>=3.0.0                 # Hugging Face datasets
+accelerate>=1.0.0               # Training acceleration
+
+# ============================================
+# JUPYTER & DEVELOPMENT
+# ============================================
+jupyter>=1.1.0                  # Jupyter notebook
+jupyterlab>=4.2.0               # JupyterLab interface
+ipykernel>=6.29.0               # IPython kernel
+ipywidgets>=8.1.0               # Interactive widgets
+notebook>=7.2.0                 # Classic notebook
+
+# ============================================
+# SECURITY SPECIFIC LIBRARIES
+# ============================================
+cryptography>=43.0.0            # Cryptographic primitives
+pycryptodome>=3.21.0            # Crypto toolkit
+# adversarial-robustness-toolbox  # ART for adversarial ML (install separately)
+
+# ============================================
+# ML OPERATIONS & EXPERIMENT TRACKING
+# ============================================
+mlflow>=2.17.0                  # ML experiment tracking
+tensorboard>=2.18.0             # Training visualization
+wandb>=0.18.0                   # Weights & Biases tracking
+
+# ============================================
+# DATA HANDLING & FORMATS
+# ============================================
+pyarrow>=18.0.0                 # Columnar data format
+openpyxl>=3.1.0                 # Excel file support
+xlrd>=2.0.0                     # Legacy Excel support
+python-docx>=1.1.0              # Word document handling
+
+# ============================================
+# UTILITIES
+# ============================================
+tqdm>=4.66.0                    # Progress bars
+requests>=2.32.0                # HTTP library
+python-dotenv>=1.0.0            # Environment variables
+pyyaml>=6.0.0                   # YAML parsing
+joblib>=1.4.0                   # Parallel computing
+
+# ============================================
+# CODE QUALITY
+# ============================================
+black>=24.10.0                  # Code formatter
+ruff>=0.7.0                     # Fast linter (replaces flake8/pylint)
+mypy>=1.13.0                    # Type checking
+pre-commit>=4.0.0               # Git hooks
+
+# ============================================
+# TESTING
+# ============================================
+pytest>=8.3.0                   # Testing framework
+pytest-cov>=5.0.0               # Coverage reporting
+
