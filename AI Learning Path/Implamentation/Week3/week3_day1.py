@@ -1,54 +1,71 @@
-import pandas as pd
+# Machine Learning Flow Flow: Data → Weights → Prediction → Loss → Adjust → Repeat
+
 import numpy as np
 
-raw_logs = pd.DataFrame(
-    {
-        "src_ip": [
-            "10.0.0.1",
-            "10.0.0.1",
-            None,
-            "192.168.1.5",
-            "10.0.0.1",
-            "evil.hacker",
-        ],
-        "bytes": [1200, None, 1500, 1300, 1250, 50000],
-        "duration": [30, 35, 40, None, 32, 3600],
-        "protocol": ["HTTP", "SSH", "HTTP", "SSH", "HTTP", "SSH"],
-    }
-)
+# True weights (the model doesn't know these)
+true_weights = np.array([3, 2])
 
-df = raw_logs.copy()
+# Generate random input data
+np.random.seed(42)
+X = np.random.randn(100, 2)  # 100 samples, 2 features
 
-print("=== RAW DATA ===")
-print(raw_logs)
+# Generate outputs using true weights
+y = np.dot(X, true_weights)  # y = X @ true_weights
 
-# Step 1 Drop rows with missing src_ip
-df = df.dropna(subset=["src_ip"])
+print("X shape:", X.shape)
+print("y shape:", y.shape)
+print("First 5 outputs:", y[:5])
 
-# Step 2: fill bytes nulls with median
-df["bytes"] = df["bytes"].fillna(df["bytes"].median())
+# Model's initial guess (random)
+weights = np.random.randn(2)
+print("Starting weights:", weights)
+print("True weights:", true_weights)
 
-# Step 3: fill duration nulls with median
-df["duration"] = df["duration"].fillna(df["duration"].median())
+# Predict with current weights
+predictions = np.dot(X, weights)
 
-# Step 4: Z-score scale bytes and duratino
-numeric_cols = ["bytes", "duration"]
+# Calculate error (Mean Squared Error)
+error = predictions - y
+loss = np.mean(error**2)
 
-for col in numeric_cols:
-    mean = df[col].mean()
-    std = df[col].std()
-    df[col] = (df[col] - mean) / std
+print("Initial loss:", loss)
 
-# Step 5: One-hot encode protocol
-df = pd.get_dummies(df, columns=["protocol"])
+# Gradient: direction to reduce loss
+gradient = np.dot(X.T, error) / len(y)
 
-# Step 6: Add ip_frequency column
-ip_counts = df.groupby("src_ip").size()
-df["ip_frequency"] = df["src_ip"].map(ip_counts)
+print("Gradient:", gradient)
 
-# Step 7: Calculate threat score
-df["threat_score"] = df["bytes"] + df["duration"] + (0.5 * df["ip_frequency"])
+# Learning rate: how big a step to take
+learning_rate = 0.1
 
-# Step 8: Flag rows with threat_score > 2
-flagged = df[df["threat_score"] > 2]
-print(flagged)
+# Update weights (go opposite of gradient)
+weights = weights - learning_rate * gradient
+
+print("Updated weights:", weights)
+print("True weights:", true_weights)
+
+# Reset weights
+weights = np.random.randn(2)
+learning_rate = 0.1
+
+# Learning loop
+for epoch in range(50):
+    # Forward pass
+    predictions = np.dot(X, weights)
+
+    # Calculate loss
+    error = predictions - y
+    loss = np.mean(error**2)
+
+    # Calculate gradient
+    gradient = np.dot(X.T, error) / len(y)
+
+    # Update weights
+    weights = weights - learning_rate * gradient
+
+    # Print every 10 epochs
+    if epoch % 10 == 0:
+        print(f"Epoch {epoch}: Loss = {loss:.4f}, Weights = {weights}")
+
+print("\nFinal weights:", weights)
+print("True weights:", true_weights)
