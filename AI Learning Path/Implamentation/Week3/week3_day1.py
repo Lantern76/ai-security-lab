@@ -1,4 +1,4 @@
-# Machine Learning Flow Flow: Data → Weights → Prediction → Loss → Adjust → Repeat
+# Weights Flow: Predict, Error, Gradient, Update, Repeat
 
 import numpy as np
 
